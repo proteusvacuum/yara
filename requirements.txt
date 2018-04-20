@@ -1,0 +1,5 @@
+ipython
+ipdb
+
+scrapy>=1.5
+Django>=2.0.0,<2.0.99
