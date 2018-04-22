@@ -25,14 +25,12 @@ class Recipe(models.Model):
 
     readable_source = models.TextField()  # the name of the source
     source = models.SlugField()  # A slugified version of the source name
-    source_hash = models.CharField(
-        max_length=32,
-        editable=False,
-    )  # A hashed version of the title and source from the spider used for dedup
+    source_hash = models.CharField(max_length=32)  # A hashed version of the title and source from the spider used for dedup
 
     title = models.TextField()
     link = models.URLField()
     description = models.TextField()
+
     img = models.URLField()
 
     categories = models.ManyToManyField(Category)
