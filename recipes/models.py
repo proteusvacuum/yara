@@ -6,3 +6,6 @@ class Recipe(models.Model):
     link = models.URLField()
     description = models.TextField()
     img = models.URLField()
+
+    def __repr__(self):
+        return f"<Recipe '{self.title}'>"

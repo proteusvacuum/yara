@@ -1,0 +1,30 @@
+.card {
+    border: none;
+    margin: none;
+    background-image: url("/static/img/background.png");
+}
+
+a {
+    color: #9a1f24;
+    text-decoration: none;
+}
+a:visited {
+    color: #5a1215;
+}
+a:hover {
+    color: #111;
+    text-decoration: underline;
+}
+
+.cell {
+    background-image: url("/static/img/background.png");
+
+}
+.top-bar{
+    border-top: 5px solid #9a1f24;
+    background-image: url("/static/img/background.png");
+}
+
+.single-recipe{
+    max-height: 450px;
+}

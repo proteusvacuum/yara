@@ -1,45 +1,36 @@
 {% load static %}
-
-<html>
+<!doctype html>
+<html class="no-js" lang="en">
     <head>
         <title>{% block title %}Instant Pot Recipes{% endblock title %}</title>
         {% block css %}
-            <link rel="stylesheet" href="{% static 'css/foundation.css' %}">
+            <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+            <link rel="stylesheet" href="{% static 'css/vendor/foundation.css' %}">
+            <link rel="stylesheet" href="{% static 'css/base/app.css' %}">
         {% endblock css %}
     </head>
     <body>
         <div class="top-bar">
             <div class="top-bar-left">
-                <ul class="dropdown menu" data-dropdown-menu>
-                    <li class="menu-text">Site Title</li>
-                    <li>
-                        <a href="#">One</a>
-                        <ul class="menu vertical">
-                            <li><a href="#">One</a></li>
-                            <li><a href="#">Two</a></li>
-                            <li><a href="#">Three</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Two</a></li>
-                    <li><a href="#">Three</a></li>
-                </ul>
-            </div>
-            <div class="top-bar-right">
-                <ul class="menu">
-                    <li><input type="search" placeholder="Search"></li>
-                    <li><button type="button" class="button">Search</button></li>
-                </ul>
+                <a href="{% url 'home' %}">
+                    <img src={% static "img/logo.png" %}>
+                </a>
             </div>
         </div>
+
         {% block content %}
         {% endblock content %}
 
         {% block javascript %}
-            <script src="{% static 'jquery.min.js' %}"></script>
-            <script src="{% static 'js/foundation.js' %}"></script>
+            <script src="{% static 'js/vendor/jquery.js' %}"></script>
+            <script src="{% static 'js/vendor/what-input.js' %}"></script>
+            <script src="{% static 'js/vendor/foundation.js' %}"></script>
             <script>
              $(document).foundation();
             </script>
         {% endblock javascript %}
     </body>
+    <footer>
+        steamer by  Laymik from the Noun Project
+    </footer>
 </html>

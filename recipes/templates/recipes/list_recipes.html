@@ -1,8 +1,19 @@
 {% extends "base.html" %}
 {% block title %}
-    Boop - {{ block.super }}
+    All Instant Pot Recipes - {{ block.super }}
 {% endblock title %}
 {% block content %}
-    <h1>hello</h1>
-
+    <div class="grid-x small-up-2 medium-up-4 large-up-6" id="recipes">
+        {% for recipe in recipes %}
+            <div class="cell">
+                <div class="card single-recipe">
+                    <img src="{{recipe.img}}">
+                    <div class="card-section">
+                        <h5><a href="{{recipe.link}}">{{ recipe.title }}</a></h5>
+                        <p>{{ recipe.description }} <a href="{{recipe.link}}">…</a></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock content %}
