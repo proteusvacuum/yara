@@ -1,21 +1,23 @@
 {% extends "base.html" %}
 {% block title %}
-    All Instant Pot Recipes - {{ block.super }}
+    All Instant Pot Recipes | {{ block.super }}
 {% endblock title %}
 {% block content %}
-    <div class="grid-x small-up-2 medium-up-4 large-up-6" id="recipes">
-        {% for recipe in recipes %}
-            <div class="cell">
-                <div class="card single-recipe">
-                    <a href="{{recipe.link}}">
-                        <img src="{{recipe.img}}" title="{{ recipe.readable_source}} - {{ recipe.title }}">
-                    </a>
-                    <div class="card-section">
-                        <h5><a href="{{recipe.link}}">{{ recipe.title }}</a></h5>
-                        <p>{{ recipe.description }} <a href="{{recipe.link}}">…</a></p>
+    <div class="grid-container fluid">
+        <div class="grid-x small-up-1 medium-up-2 large-up-6" id="recipes">
+            {% for recipe in recipes %}
+                <div class="cell">
+                    <div class="card single-recipe">
+                        <a href="{{recipe.link}}">
+                            <img src="{{recipe.img}}" title="{{ recipe.readable_source}} - {{ recipe.title }}">
+                        </a>
+                        <div class="card-section">
+                            <h5><a href="{{recipe.link}}">{{ recipe.title }}</a></h5>
+                            <p>{{ recipe.description }} <a href="{{recipe.link}}">…</a></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock content %}
