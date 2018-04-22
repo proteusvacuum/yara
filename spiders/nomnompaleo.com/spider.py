@@ -19,7 +19,7 @@ class NomNomPaleo(scrapy.Spider):
         #
         title = article.xpath('.//a//text()').extract_first()
         link = article.xpath('.//a/@href').extract_first()
-        description = "".join(response.xpath(f"//h3[.//a//text() = '{title}']/following-sibling::p[1]/text()").extract())
+        description = "".join(response.xpath(f"//h3[.//a//text() = '{title}']/following-sibling::p[1]//text()").extract())
         img = response.xpath(f"//h3[.//a//text() = '{title}']/following-sibling::p[2]/a/img/@src").extract_first()
         return {
             'source': self.name,
