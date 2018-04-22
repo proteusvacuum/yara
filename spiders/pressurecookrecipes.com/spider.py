@@ -15,7 +15,7 @@ class PressureCookRecipes(scrapy.Spider):
     def _parse_article(self, article):
         return {
             'source': self.name,
-            'source_readable': 'Amy & Jacky - pressurecookrecipes.com',
+            'readable_source': 'Amy & Jacky - pressurecookrecipes.com',
             'title': article.css('.cb-post-title > a::text').extract_first(),
             'link': article.css('.cb-post-title > a::attr(href)').extract_first(),
             'img': article.css('.cb-img-fw img::attr(src)').extract_first(),
