@@ -1,3 +1,5 @@
+import hashlib
+
 from django.db import models
 
 
@@ -15,7 +17,11 @@ class Recipe(models.Model):
     last_updated = models.DateField(auto_now=True)
 
     readable_source = models.TextField()  # the name of the source
-    source = models.SlugField()          # A slugified version of the source name
+    source = models.SlugField()  # A slugified version of the source name
+    source_hash = models.CharField(
+        max_length=32,
+        editable=False,
+    )  # A hashed version of the title and source from the spider used for dedup
 
     title = models.TextField()
     link = models.URLField()
@@ -31,4 +37,9 @@ class Recipe(models.Model):
         ordering = ('last_updated', 'source')
         indexes = [
             models.Index(fields=['source']),
+            models.Index(fields=['source_hash']),
         ]
+
+
+def get_source_hash(title, source):
+    return hashlib.md5(f'{title}-{source}'.encode('utf-8')).hexdigest()
