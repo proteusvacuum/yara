@@ -7,10 +7,14 @@ class Category(models.Model):
     name = models.TextField()
     slug = models.SlugField()
 
+    def __str__(self):
+        return f"<Category {self.name}>"
+
     class Meta:
         indexes = [
             models.Index(fields=['slug']),
         ]
+        verbose_name_plural = "categories"
 
 
 class RecipeManager(models.Manager):
@@ -22,6 +26,7 @@ class RecipeManager(models.Manager):
 class Recipe(models.Model):
     objects = RecipeManager()
     last_updated = models.DateField(auto_now=True)
+    enabled = models.BooleanField(default=True)
 
     readable_source = models.TextField()  # the name of the source
     source = models.SlugField()  # A slugified version of the source name
@@ -36,7 +41,7 @@ class Recipe(models.Model):
     categories = models.ManyToManyField(Category)
 
     def __str__(self):
-        return f"<Recipe '{self.readable_source} - {self.title}'>"
+        return f"<Recipe {self.readable_source} - {self.title}>"
 
     class Meta:
         ordering = ('last_updated', 'source')
