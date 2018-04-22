@@ -14,6 +14,7 @@ class Command(BaseCommand):
         path = os.path.join(settings.BASE_DIR, 'spiders', 'output')
         created = 0
         skipped = 0
+
         for filename in os.listdir(path):
             print(f"creating recipes from {filename}")
             with open(os.path.join(path, filename)) as f:
@@ -33,8 +34,7 @@ def add_recipe(recipe):
     try:
         Recipe.objects.get(source_hash=source_hash)
     except Recipe.DoesNotExist:
-        created += 1
         recipe['source_hash'] = source_hash
-        Recipe(**recipe).save()
+        Recipe.objects.create(**recipe).save()
         return True
     return False

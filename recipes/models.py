@@ -13,7 +13,14 @@ class Category(models.Model):
         ]
 
 
+class RecipeManager(models.Manager):
+    def create_recipe(self, *args, **kwargs):
+        recipe = self.create(*args, **kwargs)
+        return recipe
+
+
 class Recipe(models.Model):
+    objects = RecipeManager()
     last_updated = models.DateField(auto_now=True)
 
     readable_source = models.TextField()  # the name of the source
