@@ -7,7 +7,9 @@
         {% for recipe in recipes %}
             <div class="cell">
                 <div class="card single-recipe">
-                    <img src="{{recipe.img}}">
+                    <a href="{{recipe.link}}">
+                        <img src="{{recipe.img}}" title="{{ recipe.readable_source}} - {{ recipe.title }}">
+                    </a>
                     <div class="card-section">
                         <h5><a href="{{recipe.link}}">{{ recipe.title }}</a></h5>
                         <p>{{ recipe.description }} <a href="{{recipe.link}}">…</a></p>

@@ -2,14 +2,22 @@ from django.shortcuts import render
 from recipes.models import Recipe
 
 
-def list_recipes(request):
+def _list_recipes(request, recipes):
     return render(
         request,
         'recipes/list_recipes.html',
         {
-            'recipes': Recipe.objects.all()
+            'recipes': recipes
         }
     )
 
+def list_all_recipes(request):
+    return _list_recipes(request, Recipe.objects.all())
 
-home = list_recipes
+home = list_all_recipes
+
+
+def list_recipes_by_source(request, source):
+    """lists all recipes from a particular source
+    """
+    return _list_recipes(request, Recipe.objects.filter(source=source))
