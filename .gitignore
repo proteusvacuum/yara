@@ -105,3 +105,5 @@ db.sqlite3
 /package-lock.json
 localsettings.py
 /spiders/output/*
+*.jar
+/tmp/*
