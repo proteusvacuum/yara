@@ -16,12 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from recipes.views import home, list_all_recipes, list_recipes_by_category, list_recipes_by_source
+from recipes.views import (
+    home,
+    list_all_recipes,
+    list_recipes_by_category,
+    list_recipes_by_source,
+    search,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('recipes', list_all_recipes, name='list_all_recipes'),
     path('recipes/source/<slug:source>/', list_recipes_by_source, name='list_recipes_by_source'),
-    path('recipes/category/<slug:category>/', list_recipes_by_category, name='list_recipes_by_category')
+    path('recipes/category/<slug:category>/', list_recipes_by_category, name='list_recipes_by_category'),
+    path('recipes/search/', search, name='search'),
 ]

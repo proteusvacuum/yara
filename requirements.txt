@@ -1,9 +1,12 @@
 docker-compose
 
-psycopg2=2.7.4
+psycopg2==2.7.4
 
 ipython
 ipdb
 
 scrapy>=1.5
 Django>=2.0.0,<2.0.99
+django-extensions
+
+elasticsearch-dsl>=6.0.0,<7.0.0

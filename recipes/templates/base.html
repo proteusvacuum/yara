@@ -16,6 +16,14 @@
                     <img src={% static "img/logo.png" %}>
                 </a>
             </div>
+            <div class="top-bar-right">
+                <form action="{% url 'search' %}">
+                <ul class="menu">
+                    <li><input type="search" name="q" placeholder="Search.." class="animated-search-form"></li>
+                    <li><button type="submit" type="button" class="button">Search</button></li>
+                </ul>
+                </form>
+            </div>
         </div>
 
         {% block content %}
